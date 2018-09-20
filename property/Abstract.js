@@ -1,0 +1,115 @@
+/**
+ * @file Abstract.js
+ * @ignore
+ * @copyright David Kartnaller 2017
+ * @license GNU GPLv3
+ * @author David Kartnaller <david.kartnaller@gmail.com>
+ */
+
+const EventEmitter = require("events")
+
+/**
+ * Abstract Class
+ * @class
+ */
+ class Abstract extends EventEmitter {
+    /**
+     * Creates a new Abstract Class
+     * @version 1.0
+     * @param {object} parent - The Parent Object which is a TeamSpeak Instance
+     * @param {object} c - The Properties
+     */
+    constructor(parent, c) {
+        super()
+        this._propcache = c
+        this._parent = parent
+        this._cache = {}
+        this._cachetime = 50
+        this._events = {}
+        this._parent.on("close", () => this.removeAllListeners())
+    }
+
+
+    /**
+     * Subscribes to parent Events
+     * @version 1.0
+     * @param {string} name - The Event Name which should be subscribed to
+     * @param {function} cb - The Callback
+     */
+    on(name, cb) {
+        if (!(name in this._events)) this._events[name] = []
+        this._events[name].push(cb)
+        this._parent.on(name, cb)
+    }
+
+
+    /**
+     * Safely unsubscribes to all Events
+     * @version 1.0
+     */
+    removeAllListeners() {
+        Object.keys(this._events).forEach(k => {
+            this._events[k].forEach(cb => {
+                this._parent.removeListener(k, cb)
+            })
+        })
+    }
+
+
+    /*
+     * Sends a command to the TeamSpeak Server.
+     * @version 1.0
+     * @async
+     * @param {string} Command - The Command which should get executed on the TeamSpeak Server
+     * @param {object} [Object] - Optional the Parameters
+     * @param {object} [Array] - Optional Flagwords
+     * @returns {Promise.<object>} Promise object which returns the Information about the Query executed
+     */
+    execute() {
+        return this._parent.execute(...arguments)
+    }
+
+
+    /**
+     * Filters an Object with given Option
+     * @version 1.0
+     * @async
+     * @param {object} array - The Object which should get filtered
+     * @param {object} filter - Filter Object
+     * @returns {Promise.<object>} Promise object
+     */
+    filter(array, filter) {
+        return this._parent.constructor._filter(array, filter)
+    }
+
+    /**
+     * Returns the data from the last List Command
+     * @version 1.0
+     * @return {Promise.<object>}
+     */
+    getCache() {
+        return this._propcache
+    }
+
+
+    /**
+     * Sets the Data from the Last List Command
+     * @version 1.0
+     */
+    updateCache(info) {
+        this._propcache = info
+    }
+
+
+    /**
+     * Returns the Parent Class
+     * @version 1.0
+     * @returns {TeamSpeak3}
+     */
+    getParent() {
+        return this._parent
+    }
+
+}
+
+module.exports = Abstract

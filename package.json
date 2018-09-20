@@ -1,0 +1,33 @@
+{
+  "name": "teaspeak-nodejs-library",
+  "version": "1.9.1",
+  "description": "TeaSpeak3 Server Query API",
+  "homepage": "https://github.com/JetF0x/TeaSpeak-NodeJS-Library/",
+  "main": "index.js",
+  "scripts": {
+    "test": "nyc mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JetF0x/TeaSPeak-NodeJS-Library.git"
+  },
+  "keywords": [
+    "teamspeak",
+    "ts3",
+    "query",
+    "serverquery",
+    "ts",
+    "teamspeak3"
+  ],
+  "author": "JetF0x",
+  "license": "GPL-3.0-or-later",
+  "dependencies": {
+    "ssh2": "^0.6.1"
+  },
+  "devDependencies": {
+    "mocha": "^5.2.0",
+    "mock-require": "^3.0.2",
+    "nyc": "^13.0.1",
+    "sinon": "^6.2.0"
+  }
+}
