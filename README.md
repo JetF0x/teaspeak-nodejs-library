@@ -1,6 +1,6 @@
-# TS3-NodeJS-Library
+# TeaSpeak-NodeJS-Library
 
-The TS3 NodeJS Library has been strongly influenced by [PlanetTeamSpeaks TS3 PHP
+The TeaSpeak NodeJS Library has been strongly influenced by [PlanetTeamSpeaks TS3 PHP
 Framework](https://docs.planetteamspeak.com/ts3/php/framework/index.html)
 <br/><br/>
 
