@@ -1,6 +1,6 @@
 {
   "name": "teaspeak-nodejs-library",
-  "version": "1.9.1",
+  "version": "1.9.2",
   "description": "TeaSpeak3 Server Query API",
   "homepage": "https://github.com/JetF0x/TeaSpeak-NodeJS-Library/",
   "main": "index.js",
