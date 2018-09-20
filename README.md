@@ -19,7 +19,7 @@ You can find all necessary documentation on the [GitHub Wiki Page](https://githu
 
 Send a message to all non Query Clients connected:
 ```javascript
-const TeamSpeak3 = require("ts3-nodejs-library")
+const TeamSpeak3 = require("teaspeak-nodejs-library")
 
 //Create a new Connection
 var ts3 = new TeamSpeak3({
